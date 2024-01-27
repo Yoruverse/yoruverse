@@ -9,7 +9,6 @@ interface Page {
 }
 
 export default function Project({ setOnViewport }: Page) {
-
     const ref = useRef<HTMLDivElement>(null)
     const isInView = useInView(ref, { amount: 0.5 })
 
@@ -50,14 +49,14 @@ export default function Project({ setOnViewport }: Page) {
         <motion.main
             ref={ref}
             id='project'
-            className='bg-page-1 flex min-h-dvh pt-28 flex-col items-center justify-center gap-24'
+            className='bg-page-1 flex min-h-dvh flex-col items-center justify-center gap-24 pt-28'
         >
             <motion.header
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ amount: 'all', once: true }}
-                className='flex items-center sm:text-8xl text-5xl font-black uppercase text-white'
+                className='flex items-center text-5xl font-black uppercase text-white sm:text-8xl'
             >
                 <p className='bg-gradient bg-clip-text text-transparent'>
                     Yoru
@@ -109,6 +108,6 @@ export default function Project({ setOnViewport }: Page) {
                     </motion.article>
                 ))}
             </motion.aside>
-        </motion.main >
+        </motion.main>
     )
 }

@@ -7,7 +7,6 @@ interface Page {
 }
 
 export default function Support({ setOnViewport }: Page) {
-
     const ref = useRef<HTMLDivElement>(null)
     const isInView = useInView(ref, { amount: 0.5 })
 
@@ -15,7 +14,7 @@ export default function Support({ setOnViewport }: Page) {
         if (isInView) {
             setOnViewport(2)
         }
-    }, [isInView, setOnViewport]);
+    }, [isInView, setOnViewport])
 
     const rewards = [
         {

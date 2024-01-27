@@ -9,7 +9,6 @@ interface Page {
 }
 
 export default function About({ setOnViewport }: Page) {
-
     const ref = useRef<HTMLDivElement>(null)
     const isInView = useInView(ref, { amount: 0.5 })
 
@@ -38,16 +37,16 @@ export default function About({ setOnViewport }: Page) {
         <motion.main
             ref={ref}
             id='about'
-            className='bg-page-2 flex min-h-dvh flex-col items-center justify-center lg:gap-20 gap-5'
+            className='bg-page-2 flex min-h-dvh flex-col items-center justify-center gap-5 lg:gap-20'
         >
             <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ amount: 0.5, once: true }}
-                className='py-20 sm:text-5xl text-3xl font-extrabold text-white'
+                className='py-20 text-3xl font-extrabold text-white sm:text-5xl'
             >
-                <span className='bg-gradient text-center bg-clip-text text-transparent'>
+                <span className='bg-gradient bg-clip-text text-center text-transparent'>
                     ¿Quiénes
                 </span>{' '}
                 somos?
@@ -57,10 +56,10 @@ export default function About({ setOnViewport }: Page) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ amount: 0.5, once: true }}
-                className='flex lg:flex-row flex-col items-center gap-10'
+                className='flex flex-col items-center gap-10 lg:flex-row'
             >
-                <aside className='flex lg:text-start text-center w-100 flex-col justify-center gap-5 text-white'>
-                    <header className='flex lg:justify-start justify-center items-center gap-2.5 text-zinc-400'>
+                <aside className='flex w-100 flex-col justify-center gap-5 text-center text-white lg:text-start'>
+                    <header className='flex items-center justify-center gap-2.5 text-zinc-400 lg:justify-start'>
                         <IconInfoSquareFilled size={18} />
                         Sobre nosotros
                     </header>
@@ -88,7 +87,7 @@ export default function About({ setOnViewport }: Page) {
                         nuestros servicios.
                     </p>
                 </aside>
-                <aside className='flex sm:flex-row flex-col justify-center gap-10'>
+                <aside className='flex flex-col justify-center gap-10 sm:flex-row'>
                     {members.map((member, i) => (
                         <motion.article
                             initial={{ scale: 1 }}
