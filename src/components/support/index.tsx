@@ -15,7 +15,7 @@ export default function Support({ setOnViewport }: Page) {
         if (isInView) {
             setOnViewport(2)
         }
-    }, [isInView]);
+    }, [isInView, setOnViewport]);
 
     const rewards = [
         {

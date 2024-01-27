@@ -17,7 +17,7 @@ export default function About({ setOnViewport }: Page) {
         if (isInView) {
             setOnViewport(1)
         }
-    }, [isInView])
+    }, [isInView, setOnViewport])
 
     const members = [
         {

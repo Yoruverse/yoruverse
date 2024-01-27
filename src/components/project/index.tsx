@@ -17,7 +17,7 @@ export default function Project({ setOnViewport }: Page) {
         if (isInView) {
             setOnViewport(0)
         }
-    }, [isInView])
+    }, [isInView, setOnViewport])
 
     const projects = [
         {
