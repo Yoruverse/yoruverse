@@ -38,13 +38,13 @@ export default function About({ setOnViewport }: Page) {
         <motion.main
             ref={ref}
             id='about'
-            className='flex min-h-dvh flex-col items-center justify-center lg:gap-20 gap-5'
+            className='bg-page-2 flex min-h-dvh flex-col items-center justify-center lg:gap-20 gap-5'
         >
             <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                viewport={{ amount: 0.5 }}
+                viewport={{ amount: 0.5, once: true }}
                 className='py-20 sm:text-5xl text-3xl font-extrabold text-white'
             >
                 <span className='bg-gradient text-center bg-clip-text text-transparent'>
@@ -56,7 +56,7 @@ export default function About({ setOnViewport }: Page) {
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                viewport={{ amount: 0.5 }}
+                viewport={{ amount: 0.5, once: true }}
                 className='flex lg:flex-row flex-col items-center gap-10'
             >
                 <aside className='flex lg:text-start text-center w-100 flex-col justify-center gap-5 text-white'>

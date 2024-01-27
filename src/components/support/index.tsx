@@ -45,7 +45,7 @@ export default function Support({ setOnViewport }: Page) {
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                viewport={{ amount: 'all' }}
+                viewport={{ amount: 'all', once: true }}
                 className='flex flex-col items-center justify-center gap-12'
             >
                 <p className='bg-gradient bg-clip-text text-4xl font-black text-transparent'>
@@ -126,7 +126,7 @@ export default function Support({ setOnViewport }: Page) {
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                viewport={{ amount: 'all' }}
+                viewport={{ amount: 'all', once: true }}
                 className='flex flex-col justify-center gap-7'
             >
                 <p className='text-center text-white'>Recompensas</p>

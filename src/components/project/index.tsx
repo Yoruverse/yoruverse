@@ -56,7 +56,7 @@ export default function Project({ setOnViewport }: Page) {
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                viewport={{ amount: 'all' }}
+                viewport={{ amount: 'all', once: true }}
                 className='flex items-center sm:text-8xl text-5xl font-black uppercase text-white'
             >
                 <p className='bg-gradient bg-clip-text text-transparent'>
@@ -67,6 +67,7 @@ export default function Project({ setOnViewport }: Page) {
             <motion.aside
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 className='flex flex-wrap justify-center gap-10'
             >
                 {projects.map((content, i) => (
