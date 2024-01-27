@@ -6,7 +6,7 @@ const rubik = Rubik({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Yoruverse',
-    description: 'Bienvenido a Yoruverse, el un universo de aplicaciones',
+    description: 'Bienvenido a Yoruverse, el multiverso de las aplicaciones',
     keywords: [
         'Yoruverse',
         'NextJS',

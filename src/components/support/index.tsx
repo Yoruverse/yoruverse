@@ -1,8 +1,22 @@
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { IconDiamondFilled } from '@tabler/icons-react'
+import { motion, useInView } from 'framer-motion'
+import { useRef, useEffect } from 'react'
 
-export default function Support() {
+interface Page {
+    setOnViewport: (value: number) => void
+}
+
+export default function Support({ setOnViewport }: Page) {
+
+    const ref = useRef<HTMLDivElement>(null)
+    const isInView = useInView(ref, { amount: 0.5 })
+
+    useEffect(() => {
+        if (isInView) {
+            setOnViewport(2)
+        }
+    }, [isInView]);
+
     const rewards = [
         {
             name: 'YoruLive',
@@ -22,9 +36,10 @@ export default function Support() {
     ]
 
     return (
-        <main
+        <motion.main
+            ref={ref}
             id='support'
-            className='bg-page-3 flex h-dvh flex-col items-center justify-center gap-32'
+            className='bg-page-3 flex min-h-dvh flex-col items-center justify-center gap-32'
         >
             <motion.header
                 initial={{ opacity: 0, y: -50 }}
@@ -184,6 +199,6 @@ export default function Support() {
                     </section>
                 </section>
             </motion.footer>
-        </main>
+        </motion.main>
     )
 }

@@ -1,9 +1,24 @@
 import Link from 'next/link'
 import { IconArrowUpRight } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { Icon } from '..'
+import { useEffect, useRef } from 'react'
 
-export default function Project() {
+interface Page {
+    setOnViewport: (value: number) => void
+}
+
+export default function Project({ setOnViewport }: Page) {
+
+    const ref = useRef<HTMLDivElement>(null)
+    const isInView = useInView(ref, { amount: 0.5 })
+
+    useEffect(() => {
+        if (isInView) {
+            setOnViewport(0)
+        }
+    }, [isInView])
+
     const projects = [
         {
             name: 'YoruLive',
@@ -32,16 +47,17 @@ export default function Project() {
     ]
 
     return (
-        <main
+        <motion.main
+            ref={ref}
             id='project'
-            className='bg-page-1 flex h-dvh flex-col items-center justify-center gap-24'
+            className='bg-page-1 flex min-h-dvh pt-28 flex-col items-center justify-center gap-24'
         >
             <motion.header
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ amount: 'all' }}
-                className='flex items-center text-8xl font-black uppercase text-white'
+                className='flex items-center sm:text-8xl text-5xl font-black uppercase text-white'
             >
                 <p className='bg-gradient bg-clip-text text-transparent'>
                     Yoru
@@ -51,13 +67,13 @@ export default function Project() {
             <motion.aside
                 initial={{ opacity: 0, y: -50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 'all' }}
-                className='flex gap-10'
+                className='flex flex-wrap justify-center gap-10'
             >
                 {projects.map((content, i) => (
                     <motion.article
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.05 }}
+                        viewport={{ amount: 0.5 }}
                         key={i}
                         className='bg-gradient overflow-hidden rounded-xl p-1'
                     >
@@ -92,6 +108,6 @@ export default function Project() {
                     </motion.article>
                 ))}
             </motion.aside>
-        </main>
+        </motion.main >
     )
 }

@@ -1,38 +1,43 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navigation() {
+interface Navigation {
+    onViewport?: number
+}
+
+export default function Navigation({ onViewport }: Navigation) {
+
     const links = [
         {
             name: 'Proyectos',
             url: '/#project',
-            active: true,
+            active: onViewport === 0,
         },
         {
             name: 'Quiénes somos',
             url: '/#about',
-            active: false,
+            active: onViewport === 1,
         },
         {
             name: 'Apóyanos',
             url: '/#support',
-            active: false,
+            active: onViewport === 2,
         },
     ]
 
     return (
-        <nav className='bg-gradient/10 fixed right-1/2 top-5 z-50 flex w-fit translate-x-1/2 items-center justify-between gap-10 rounded-lg p-5 py-2.5 text-sm font-medium backdrop-blur-sm'>
-            {links.map((link, i) => (
-                <Link
-                    href={link.url}
-                    className='flex w-32 items-center justify-center gap-2 truncate py-1.5 text-white'
-                    key={i}
-                >
-                    {link.active && (
-                        <span className='h-2 w-2 rounded-full bg-green-400' />
-                    )}
-                    <p>{link.name}</p>
-                </Link>
-            ))}
+        <nav className='z-50 fixed w-full  flex items-center justify-center p-5'>
+            <main className=' text-white bg-gradient/10 flex w-fit items-center justify-between sm:gap-10 gap-0 rounded-lg sm:px-5 px-2 py-2 sm:text-sm text-xs backdrop-blur-sm'>
+                {links.map((link, i) => (
+                    <Link
+                        href={link.url}
+                        className={`${link.active ? "text-white" : "text-zinc-400"} relative transition-all flex sm:w-32 w-28 items-center justify-center gap-2 truncate py-1.5`}
+                        key={i}
+                    >
+                        {link.name}
+                    </Link>
+                ))}
+            </main>
         </nav>
     )
 }
